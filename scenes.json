@@ -1,0 +1,16 @@
+{
+  "lang": [
+    "fr",
+    "en"
+  ],
+  "scenes": {
+    "greeting": {
+      "fr": "Bonjour 👋 Je suis ton coach. Dis-moi ce que tu ressens en ce moment.",
+      "en": "Hi 👋 I’m your coach. Tell me how you feel right now."
+    },
+    "breath": {
+      "fr": "On fait 4-7-8 ? Inspire 4s, retiens 7s, expire 8s. On le fait 3 fois.",
+      "en": "Let’s do 4-7-8: inhale 4s, hold 7s, exhale 8s. We’ll do it 3 times."
+    }
+  }
+}

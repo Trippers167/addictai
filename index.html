@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#4f46e5">
+  <title>AddictAI – Walk & Talk</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- One-time consent overlay -->
+  <div id="gate" class="gate hidden">
+    <div class="gate-card">
+      <h1>🦋 AddictAI</h1>
+      <p data-fr="AddictAI n'est pas un service médical. En cas d'urgence, appelez le 911. Aide santé mentale au Canada : 988 (24/7)."
+         data-en="AddictAI is not a medical service. In an emergency, call 911. Mental health help in Canada: 988 (24/7).">
+        AddictAI n'est pas un service médical. En cas d'urgence, appelez le 911. Aide santé mentale au Canada : 988 (24/7).
+      </p>
+      <label class="chk">
+        <input id="age16" type="checkbox">
+        <span data-fr="J'ai 16 ans ou plus" data-en="I am 16 or older">J'ai 16 ans ou plus</span>
+      </label>
+      <button id="gateGo" class="card primary" disabled data-fr="Continuer" data-en="Continue">Continuer</button>
+      <div class="lang-switch">
+        <button id="gateLang" class="lang">EN</button>
+      </div>
+    </div>
+  </div>
+
+  <header class="topbar">
+    <div class="brand">🦋 AddictAI</div>
+    <button id="langBtn" class="lang">EN</button>
+  </header>
+
+  <main class="container">
+    <!-- HOME -->
+    <section id="home" class="screen active">
+      <h1 class="headline" data-fr="Tu n'es pas seul." data-en="You're not alone.">Tu n'es pas seul.</h1>
+      <p class="subtitle" data-fr="Coach anonyme 24/7 – Marche et parle, je t'écoute." data-en="Anonymous coach 24/7 – Walk and talk, I’m listening.">
+        Coach anonyme 24/7 – Marche et parle, je t'écoute.
+      </p>
+      <div class="cards">
+        <button id="talkBtn" class="card primary" data-fr="Je veux parler 🎤" data-en="I want to talk 🎤">Je veux parler 🎤</button>
+        <button id="urgeBtn" class="card danger" data-fr="J'ai une envie maintenant ⚡" data-en="I have a craving now ⚡">J'ai une envie maintenant ⚡</button>
+        <button id="progressBtn" class="card success" data-fr="Mon suivi 📈" data-en="My progress 📈">Mon suivi 📈</button>
+      </div>
+      <div class="legal">
+        <p data-fr="AddictAI n'est pas un service médical. Urgence : 911. Santé mentale : 988 (Canada)." data-en="AddictAI is not a medical service. Emergency: 911. Mental health: 988 (Canada).">
+          AddictAI n'est pas un service médical. Urgence : 911. Santé mentale : 988 (Canada).
+        </p>
+      </div>
+    </section>
+
+    <!-- TALK -->
+    <section id="talk" class="screen">
+      <button class="back" id="backFromTalk">←</button>
+      <h2 class="section" data-fr="Dialogue en marche" data-en="Walk & Talk Session">Dialogue en marche</h2>
+      <div id="chat" class="chat" aria-live="polite"></div>
+      <div class="pttRow">
+        <button id="ptt" class="ptt">🎤 <span data-fr="Appuie pour parler" data-en="Press to talk">Appuie pour parler</span></button>
+        <button id="speakToggle" class="speak" aria-pressed="true" title="TTS">🔊</button>
+      </div>
+      <div class="hint" data-fr="Astuce : parle calmement et fais des pauses." data-en="Tip: speak calmly and pause between phrases.">
+        Astuce : parle calmement et fais des pauses.
+      </div>
+    </section>
+
+    <!-- URGE -->
+    <section id="urge" class="screen">
+      <button class="back" id="backFromUrge">←</button>
+      <h2 class="section danger" data-fr="Mode Urgence" data-en="Emergency Mode">Mode Urgence</h2>
+      <ol class="steps">
+        <li data-fr="Respire avec moi 60 secondes." data-en="Breathe with me for 60 seconds.">Respire avec moi 60 secondes.</li>
+        <li data-fr="Observe l'envie : elle monte, elle redescend (vague)." data-en="Observe the urge: it rises and falls (a wave).">Observe l'envie : elle monte, elle redescend (vague).</li>
+        <li>
+          <span data-fr="Besoin d'aide ? Appelle" data-en="Need help? Call">Besoin d'aide ? Appelle</span> 
+          <a href="tel:988">988</a> (Canada) — <span data-fr="ou" data-en="or">ou</span> <a href="tel:911">911</a>.
+        </li>
+      </ol>
+    </section>
+
+    <!-- PROGRESS -->
+    <section id="progress" class="screen">
+      <button class="back" id="backFromProg">←</button>
+      <h2 class="section success" data-fr="Mon suivi" data-en="My Progress">Mon suivi</h2>
+      <div class="progressBox">
+        <div><span data-fr="Jours sans rechute :" data-en="Days sober:">Jours sans rechute :</span> <strong id="days">0</strong></div>
+        <div><span data-fr="Envie aujourd'hui (0–10) :" data-en="Craving today (0–10):">Envie aujourd'hui (0–10) :</span> <input id="crave" type="range" min="0" max="10" value="0"></div>
+        <button id="saveDay" class="card success" data-fr="Enregistrer la victoire du jour" data-en="Save today’s victory">Enregistrer la victoire du jour</button>
+      </div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', ()=> navigator.serviceWorker.register('sw.js'));
+    }
+  </script>
+</body>
+</html>
