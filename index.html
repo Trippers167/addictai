@@ -5,8 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#4f46e5">
   <title>AddictAI – Walk & Talk</title>
-  <link rel="manifest" href="manifest.webmanifest">
-  <link rel="stylesheet" href="styles.css">
+
+  <!-- Manifest + CSS -->
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
   <!-- One-time consent overlay -->
@@ -92,10 +94,11 @@
     </section>
   </main>
 
-  <script src="app.js"></script>
+  <!-- JS -->
+  <script src="/app.js"></script>
   <script>
     if ('serviceWorker' in navigator) {
-      window.addEventListener('load', ()=> navigator.serviceWorker.register('sw.js'));
+      window.addEventListener('load', ()=> navigator.serviceWorker.register('/sw.js'));
     }
   </script>
 </body>
